@@ -9,8 +9,10 @@
 </h1>
 </td>
 <td class="sidebar round">
-<strong>Name</strong> <%= @user.name %><br />
-<strong>URL</strong> <%= link_to user_path(@user), @user %>
+<strong>[Nick]</strong> <%= @user.name %><br />
+<strong>[Steam IP]</strong> <%= @user.ip %><br />
+<strong>[Profil]</strong> <%= link_to user_path(@user), @user %><br />
+<strong>[Ostatnio online]</strong> (1234567-mockup)<br />
 </td>
 </tr>
 </table>
