@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  ip: MyString
+  email: MyString
+  kill: 1
+  death: 1
+  admin: false
+
+two:
+  name: MyString
+  ip: MyString
+  email: MyString
+  kill: 1
+  death: 1
+  admin: false

@@ -1,0 +1,15 @@
+
+<h1>All users</h1>
+<ul class="users">
+<% @users.each do |user| %>
+<li>
+<%= link_to user.name, user %>
+  <% if current_user.admin? %>
+    >> <%= link_to "delete", user, :method => :delete, :confirm => "Srsly?", :title => "Nukin #{user.name}" %>
+  <% else %>
+    not admin :E
+  <% end %>
+</li>
+<% end %>
+</ul>
+
