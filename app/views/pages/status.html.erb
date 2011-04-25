@@ -1,0 +1,15 @@
+<h1>HLDSWeb Serwer Status</h1>
+<p>
+Obecnie serwer jest:
+
+
+</p>
+  <% if hostname.nil? %>
+serwer offline
+  <% else %>
+host:<%= hostname %><br />
+tcp:<%= tcp %><br />
+players:<%= players %><br />
+map:<%= map %><br />
+ver:<%= version %>
+ <% end %>
