@@ -57,12 +57,60 @@ def tcp
 end
 
 def players
-        
    File.readlines(@@log).each do |line| 
    @line = line.split(':') if line =~ /players/    
    end
  @line.delete("players ")
  @line.join(' ')
 end
+##########################################
+
+def parse
+  trg = 0
+  @score = []
+          
+   File.readlines(@@log).each do |line| 
+    trg = 1 if line =~ /# \d/  
+      @score << line.split(' ') if trg == 1
+    trg = 0 if line =~ /\d/    
+    end
+    return @score.size-1
+end
+
+
+def  players_online(p,d)
+  parse
+  @entry = []  
+  if d == 4
+    if Integer(@score[p][8]) == 0 
+      @entry << 0
+    else
+    @entry << (Float(@score[p][5])/Float(@score[p][8])).round(2)
+    end
+  else
+  @entry << @score[p][d] #2 name
+  #@entry << @score[p][5] #5 frag
+  #@entry << @score[p][8] #8 death
+  #@entry << @score[p][6] #6 time
+  #@entry << @score[p][7] #7 ping
+   return @entry.to_s.delete("\[\]\"\\")
+  end
+end  
+
+
+def ft
+ return "trololololol"
+end
+
+
+
+
+
+
+
+
+
+
+
 end
 

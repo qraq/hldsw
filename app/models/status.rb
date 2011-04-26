@@ -1,48 +1,21 @@
-class Status
+
   require "fileutils"
   @@log = '/home/qraq/Desktop/hlds/cstrike/logi/log'
   
- 
-
+   trg = 0
+  @score = []
             
    File.readlines(@@log).each do |line| 
-   @hostname = line.split(':') if line =~ /hostname/    
-   @version = line.split(':') if line =~ /version/ 
-   @tcp = line.split(':') if line =~ /tcp\/ip/ 
-   @map = line.split(":") if line =~ /map/ 
-   @players = line.split(":") if line =~ /players/ 
+    trg = 1 if line =~ /# \d/  
+      @score << line.split(' ') if trg == 1
+    trg = 0 if line =~ /\d/    
     end
 
- 
- @hostname.delete("hostname")
- @version.delete("version ")
- @tcp.delete("tcp/ip  ")
- @map.delete("map     ")
- @players.delete("players ")
- @hostname.join(' ')
- @version.join(' ')
- @map.join(' ')
- @players.join(' ')
 
-def hostname
-  print @hostname
-end
-
-def version
-  print @version
-end
-
-def tcp 
-  print @tcp
-end
-
-def map 
-  print @map
-end
-
-def players
-  print @players
-end
-
-end
-
+@player= []
+def  player_name
+  for i in 0..@score.size-1
+   return @player << @score[i][2] + "\n"
+  
+  end
+end  
