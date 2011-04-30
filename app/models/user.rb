@@ -34,6 +34,13 @@ def self.authenticate_with_salt(id, cookie_salt)
 end  
 
 
+
+def find_ip(ip)
+    user = User.find_by_ip(ip)
+    return nil if user.nil?
+    return user if !user.nil?
+end 
+
   
   private 
   
