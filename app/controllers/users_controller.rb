@@ -38,6 +38,8 @@ class UsersController < ApplicationController
     if current_user.nil?     
   
       @user = User.new(params[:user])
+      @user.kill = 0
+      @user.death = 0
       if @user.save
         sign_in @user
         flash[:success] = "Welcome to the Sample App!"
@@ -62,14 +64,17 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
-      flash[:success] = "Profile updated."
+      flash[:success] = "Profil zaktualizowany."
       redirect_to @user
     else
     @title = "Edit user"
     render 'edit'
     end
+    
        
 end
+
+
 
 private
   def authenticate

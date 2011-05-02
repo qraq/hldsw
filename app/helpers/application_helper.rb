@@ -83,7 +83,7 @@ def  players_online(p,d)
   @entry = []  
   if d == 4
     if Integer(@score[p][8]) == 0 
-      @entry << 0
+      @entry << Float(@score[p][5])/1
     else
     @entry << (Float(@score[p][5])/Float(@score[p][8])).round(2)
     end
@@ -93,6 +93,7 @@ def  players_online(p,d)
   #@entry << @score[p][8] #8 death
   #@entry << @score[p][6] #6 time
   #@entry << @score[p][7] #7 ping
+   #@entry << @score[p][7] #9 ip
    return @entry.to_s.delete("\[\]\"\\")
   end
 end  
@@ -102,10 +103,15 @@ def ft
  return "trololololol"
 end
 
+def detect_ip
+    if request.remote_ip == '127.0.0.1'
+      '192.168.0.150'
+    else
+      request.remote_ip
+    end
+end
 
-
-
-
+  
 
 
 

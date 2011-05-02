@@ -13,12 +13,12 @@
 <% end %>
 </ul>
 
+
 <h1>Obecnie online </h1>
 
- 
-
 <table>
-  <tr>  
+  <tr> 
+    <td> Konto gracza</td>
     <td> Nick gracza </td>
     <td> Fragi </td>
     <td> Śmierci </td>
@@ -26,10 +26,31 @@
     <td> Czas w grze </td>
     <td> Ping </td>
   </tr> 
-  
     
   <% for i in 0..parse %>
+  
+    
+    
   <tr>
+    <td>
+  
+      <% @users.each do |user| %>
+       
+        <% if !user.find_ip(players_online(i,9)[0..12]).nil? %>
+          <%= link_to user.find_ip(players_online(i,9)[0..12]).name, user.find_ip(players_online(i,9)[0..12]) %>
+          <%  killscore(i) %>
+          <%  deathscore(i) %>  
+          <% break %>
+        <% else  %>
+        Gość
+        <% break %>
+        <% end %>
+  
+      <% end %>
+       
+
+    </td>
+    
     <td><%= players_online(i,2)   %></td> 
     <td><%= players_online(i,5)   %></td>
     <td><%= players_online(i,8)   %> </td> 

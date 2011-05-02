@@ -2,11 +2,15 @@
 <tr>
 <td class="main">
 <h1>
-
-
-
 <%= @user.name %>
 </h1>
+  <ul>
+    <li> Miejsce w drabince: <br/> </li>
+    <li> Punktów ogółem: <%= @user.kill %>  <br/></li>
+    <li> Śmierci ogółem: <%=  @user.death %><br/></li>
+    <li> K/D ratio: <%= kdratio %> <br/></li>
+    <li> Status:  <br /></li>
+  <ul>
 </td>
 <td class="sidebar round">
 <strong>[Nick]</strong> <%= @user.name %><br />
