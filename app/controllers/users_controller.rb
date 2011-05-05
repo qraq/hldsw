@@ -16,6 +16,9 @@ class UsersController < ApplicationController
   def index
     @title = "All users"
     @users = User.all
+    @sorted_users = User.find(:all, :order => sort_order('name'))
+         
+         
 
   end
   
@@ -71,9 +74,12 @@ class UsersController < ApplicationController
     render 'edit'
     end
     
-       
-end
+    
+   end
 
+    def sort_order(default)
+      "#{(params[:c] || default.to_s).gsub(/[\s;'\"]/,'')} #{params[:d] == 'down' ? 'DESC' : 'ASC'}"
+    end
 
 
 private

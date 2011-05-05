@@ -6,11 +6,19 @@
 </h1>
   <ul>
     <li> Miejsce w drabince: <br/> </li>
-    <li> Punktów ogółem: <%= @user.kill %>  <br/></li>
+    <li> Punktów ogółem: <%= @user.points %>  <br/></li>
     <li> Śmierci ogółem: <%=  @user.death %><br/></li>
     <li> K/D ratio: <%= kdratio %> <br/></li>
-    <li> Status:  <br /></li>
-  <ul>
+      <% for i in 0..parse %>
+      <% s = online(i) %>
+      <% break if !s.nil? %>
+      <% end %>
+    <%if !s.nil?  %>
+      <li> Status: Online<br/></li>
+    <% else %>
+      <li> Status: Offline<br/></li>
+    <% end %>
+    <ul>
 </td>
 <td class="sidebar round">
 <strong>[Nick]</strong> <%= @user.name %><br />

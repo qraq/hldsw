@@ -1,8 +1,13 @@
 
 <h1>Zarejestrowani użytkownicy </h1>
 <ul class="users">
-<% @users.each do |user| %>
+<%= sort_link 'points', :points %>   
+<%= sort_link 'name', :name %> 
+  
+ 
+<% @sorted_users.each do |user| %>
 <li>
+ 
 <%= link_to user.name, user %>
   <% if current_user.admin? %>
     >> <%= link_to "delete", user, :method => :delete, :confirm => "Srsly?", :title => "Nukin #{user.name}" %>

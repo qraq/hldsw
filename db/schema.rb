@@ -10,18 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110419172355) do
+ActiveRecord::Schema.define(:version => 20110505170619) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "ip"
     t.string   "email"
-    t.integer  "kill"
-    t.integer  "death"
-    t.boolean  "admin"
+    t.integer  "points",               :default => 0
+    t.integer  "death",                :default => 0
+    t.boolean  "admin",                :default => false             
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "encrypted_password"
+    t.integer  "last_kill",          :default => 0
+    t.integer  "last_death",         :default => 0
   end
 
 end

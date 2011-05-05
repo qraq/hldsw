@@ -17,12 +17,12 @@ module UsersHelper
     end
     
     user.last_kill = current_score
-    user.kill = user.kill+dif
+    user.points = user.points+dif
     user.password = :password
     user.save
     
     #debug
-    "dif=" + dif.to_s + " db score=" + user.kill.to_s + " last store=" +user.last_kill.to_s +  " current=" + current_score.to_s
+    #"dif=" + dif.to_s + " db score=" + user.points.to_s + " last store=" +user.last_kill.to_s +  " current=" + current_score.to_s
   
 end
 
@@ -55,9 +55,8 @@ end
   def kdratio
     @user = User.find(params[:id])
     death = 0 if @user.death.nil? 
-    kill = 0 if @user.kill.nil?
-    
-    kill = @user.kill
+    kill = 0 if @user.points.nil?    
+    kill = @user.points
     death = @user.death
      if death == 0
         ratio = kill/1 
@@ -67,16 +66,43 @@ end
      return ratio.round(2)
    end
   
-  def online
-      for i in 0..parse
-        @users.each do |user|
-        if user.find_ip(players_online(i,9)[0..12]).nil?
-          return "Offline"
-        else 
-           return "Online"
-        end
-      end
-  end
+  
+  
+  
+  def online(i)
+    @user = User.find(params[:id])
+    #@users = User.all
     
+    #  i = 
+      if !@user.find_ip(players_online(i,9)[0..12]).nil?
+      #@user.find_ip(players_online(1,9)[0..12]) == @user.ip
+       if @user.find_ip(players_online(i,9)[0..12]).ip == (@user.ip)
+        return  @user.find_ip(players_online(i,9)[0..12]).name
+       
+      else 
+        return nil
+       end
+          #     return  "Offline" 
+       # else  
+          #   return "Online"
+        end
+        #end
+        return nil
+      end
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
-end
+
