@@ -1,24 +1,35 @@
 
-<h1>Zarejestrowani użytkownicy </h1>
-<ul class="users">
-<%= sort_link 'points', :points %>   
-<%= sort_link 'name', :name %> 
+<h1>Drabinka użytkowników</h1>
+
+
+ 
+<table class="lader">
+  <tr> 
+    <td> <%= sort_link 'Miejsce', :points %></td>
+    <td> <%= sort_link 'Gracz', :name %> </td>
+    <td> <%= sort_link 'Punkty', :points %>   </td>
+    <td> <%= sort_link 'Dołączył', :created_at %> </td>
+    <td>  </td>
+  </tr> 
   
- 
 <% @sorted_users.each do |user| %>
-<li>
- 
-<%= link_to user.name, user %>
+<tr>   
+  <td> <%= ladder(user.name)%></td>
+  <td><%= link_to user.name, user %></td>
+  <td><%= user.points %></td>
+  <td><%= user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
   <% if current_user.admin? %>
-    >> <%= link_to "delete", user, :method => :delete, :confirm => "Srsly?", :title => "Nukin #{user.name}" %>
+    <td><%= link_to "delete", user, :method => :delete, :confirm => "Jesteś pewien?", :title => "Kasowanie #{user.name}" %></td>
   <% else %>
-    not admin :E
+    <td></td>
+  <% end %>  
+</tr>  
   <% end %>
-</li>
-<% end %>
-</ul>
 
-
+  
+  
+ </table>
+</br></br>
 <h1>Obecnie online </h1>
 
 <table>

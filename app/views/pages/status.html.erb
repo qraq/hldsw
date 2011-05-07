@@ -1,15 +1,29 @@
 <h1>HLDSWeb Serwer Status</h1>
 <p>
-Obecnie serwer jest:
+Status serwerat:
 
 
 </p>
   <% if hostname.nil? %>
-serwer offline
+Serwer offline!
   <% else %>
-host:<%= hostname %><br />
-tcp:<%= tcp %><br />
-players:<%= players %><br />
-map:<%= map %><br />
-ver:<%= version %>
- <% end %>
+<table class="status">
+  
+<tr>
+<td><strong>[Nazwa serwera]:</strong></td> <td><%= hostname %></td>
+</tr>
+<tr>
+<td><strong>[Adres IP serwera]:</strong></td> <td><%= tcp %></td>
+</tr>
+<tr>
+<td><strong>[Graczy]:</strong></td> <td><%= players %></td>
+</tr>
+<tr>
+<td><strong>[Aktywna mapa]:</strong></td> <td><%= map  %></td>
+</tr>
+<tr>
+<td><strong>[Wersja Steam serwera]:</strong></td> <td><%= version  %></td>
+</tr>
+
+</table>
+<% end %>

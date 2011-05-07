@@ -71,30 +71,39 @@ end
   
   def online(i)
     @user = User.find(params[:id])
-    #@users = User.all
-    
-    #  i = 
       if !@user.find_ip(players_online(i,9)[0..12]).nil?
-      #@user.find_ip(players_online(1,9)[0..12]) == @user.ip
-       if @user.find_ip(players_online(i,9)[0..12]).ip == (@user.ip)
-        return  @user.find_ip(players_online(i,9)[0..12]).name
-       
-      else 
-        return nil
-       end
-          #     return  "Offline" 
-       # else  
-          #   return "Online"
-        end
-        #end
-        return nil
+             if @user.find_ip(players_online(i,9)[0..12]).ip == (@user.ip)
+                return  @user.find_ip(players_online(i,9)[0..12]).name
+             else 
+                return nil
+             end
       end
+       return nil
+  end
 
-     
-
-
-
-
+  def sort_order(default)
+      "#{(params[:c] || default.to_s).gsub(/[\s;'\"]/,'')} #{params[:d] == 'up' ?  'ASC': 'DESC'}"
+  end
+  
+  
+  def ladder_place
+    @user = User.find(params[:id])
+    users = User.find(:all, :order => sort_order('points'))
+    return users.index(@user)+1
+  end
+  
+  def ladder(name)
+    array = []
+    @user = User.find_by_name(name)
+    users = User.all
+    
+    users.each do |user|
+      array << user.points
+    end
+    array.sort! {|x,y| y <=> x }
+    array.index(@user.points)+1
+  end
+ 
 
 
 

@@ -1,7 +1,7 @@
 module ApplicationHelper
 # Return a title on a per-page basis.
 def title
-base_title = "Ruby on Rails Tutorial Sample App"
+base_title = "HLDS-Web Server Konfigurator"
 if @title.nil?
 base_title
 else
@@ -45,6 +45,10 @@ def map
    end
  @line.delete("map     ")
  @line.join(' ')
+ 
+ str = @line[0]
+ str[-2..-1] = ""
+ return str
 end
 
 def tcp

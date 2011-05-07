@@ -7,19 +7,17 @@ class UsersController < ApplicationController
   
   def destroy 
     User.find(params[:id]).destroy
-    flash[:success] = "user nuked!"
+    flash[:success] = "Uzytkownik skasowany!"
     redirect_to users_path
     
   end
   
   
   def index
-    @title = "All users"
+    @title = "Wszyscy uzytkownicy"
     @users = User.all
-    @sorted_users = User.find(:all, :order => sort_order('name'))
-         
-         
-
+    @sorted_users = User.find(:all, :order => sort_order('points'))
+   
   end
   
   def new
@@ -41,11 +39,11 @@ class UsersController < ApplicationController
     if current_user.nil?     
   
       @user = User.new(params[:user])
-      @user.kill = 0
+      @user.points = 0
       @user.death = 0
       if @user.save
         sign_in @user
-        flash[:success] = "Welcome to the Sample App!"
+        flash[:success] = "Witaj w HLDS-Web!"
         redirect_to @user
       else
         @title = "Sign up"
@@ -70,16 +68,14 @@ class UsersController < ApplicationController
       flash[:success] = "Profil zaktualizowany."
       redirect_to @user
     else
-    @title = "Edit user"
+    @title = "Edytycja profilu"
     render 'edit'
     end
     
     
    end
 
-    def sort_order(default)
-      "#{(params[:c] || default.to_s).gsub(/[\s;'\"]/,'')} #{params[:d] == 'down' ? 'DESC' : 'ASC'}"
-    end
+    
 
 
 private

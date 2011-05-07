@@ -1,11 +1,11 @@
-<table class="profile" summary="Profile information">
+<table class="profile" summary="Informacje o Profilu">
 <tr>
 <td class="main">
 <h1>
 <%= @user.name %>
 </h1>
   <ul>
-    <li> Miejsce w drabince: <br/> </li>
+    <li> Miejsce w drabince: <%= ladder_place %> </li>
     <li> Punktów ogółem: <%= @user.points %>  <br/></li>
     <li> Śmierci ogółem: <%=  @user.death %><br/></li>
     <li> K/D ratio: <%= kdratio %> <br/></li>
@@ -22,9 +22,9 @@
 </td>
 <td class="sidebar round">
 <strong>[Nick]</strong> <%= @user.name %><br />
-<strong>[Steam IP]</strong> <%= @user.ip %><br />
+<strong>[Adres IP]</strong> <%= @user.ip %><br />
 <strong>[Profil]</strong> <%= link_to user_path(@user), @user %><br />
-<strong>[Ostatnio online]</strong> (1234567-mockup)<br />
+<strong>[Utworzono]</strong> <%= @user.created_at.strftime("%Y-%m-%d %H:%M")  %> <br />
 </td>
 </tr>
 </table>
