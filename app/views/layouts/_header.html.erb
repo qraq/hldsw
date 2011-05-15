@@ -6,7 +6,7 @@
 <ul>
   <li><%= link_to "Start",  home_path %></li>
 <% if admin_user? %>
-  <li><%= link_to "Ustawienia serwera",  '#' %></li 
+  <li><%= link_to "Ustawienia serwera",  serverconsole_path %></li 
 <% end %>
 <% if signed_in? %>
   <li><%= link_to "Użytkownicy", users_path %></li>

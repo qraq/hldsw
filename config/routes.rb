@@ -4,12 +4,12 @@ Hldsweb::Application.routes.draw do
  resources :sessions, :only => [:new, :create, :destroy]
 
 
-match '/contact', :to => 'pages#contact'
-match '/about', :to => 'pages#about'
-match '/help', :to => 'pages#help'
+
+
 match '/home', :to => 'pages#home'
 match '/status', :to => 'pages#status'
 match '/signup', :to => 'users#new'
+match '/serverconsole', :to => 'users#serverconsole' 
 match '/signin', :to => 'sessions#new'
 match '/signout', :to => 'sessions#destroy'
 

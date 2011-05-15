@@ -103,9 +103,6 @@ def  players_online(p,d)
 end  
 
 
-def ft
- return "trololololol"
-end
 
 def detect_ip
     if request.remote_ip == '127.0.0.1'
@@ -120,6 +117,54 @@ end
     sort_dir = params[:d] == 'up' ? 'down' : 'up'
     link_to_unless condition, title, request.parameters.merge( {:c => column, :d => sort_dir} )
   end
+######################## RCON ############################
+
+ @ip_server = '127.0.0.1'
+def rcon_status
+ server = GoldSrcServer.new(@ip_server)
+ begin
+  server.rcon_auth(@rcon_pass)
+  puts server.rcon_exec('status')
+ rescue RCONNoAuthException
+  warn 'Niepoprawne haslo dostepu do serwera.'
+ end
+end
+
+def rcon_command(command, value)
+ server = GoldSrcServer.new(@ip_server)
+ return nil if value.nil?
+ begin
+  server.rcon_auth('haslo')
+  puts server.rcon_exec(command.to_s+ " " +value.to_s)
+ #  puts command.to_s+ " " +value.to_s
+rescue RCONNoAuthException
+  warn 'Niepoprawne haslo dostepu do serwera.'
+ end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -11,8 +11,8 @@
 
 <div class="field">
   <%= f.label "Twój numer IP" %></br>
-  <%= f.text_field :ip %><br/>
-  Twój ip: <%= detect_ip %>
+  <%= f.text_field :ip, :value => detect_ip %><br/>
+ 
 </div> 
 
 <div class="field">

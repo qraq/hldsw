@@ -1,0 +1,10 @@
+<h1>HLDSWeb Serwer Konfiguracja</h1>
+
+
+<% form_tag(@value, :method => "get") do %>
+<table> 
+  Nazwa serwera
+  <td><%= text_field_tag(:q, hostname) %></td>
+  <td><%= button_to "Zmień", rcon_command('hostname', params[:q])%></td>
+</table>
+<% end %>
