@@ -1,10 +1,98 @@
 <h1>HLDSWeb Serwer Konfiguracja</h1>
 
+<% if hostname.nil? %>
+Serwer offline!
+  <% else %> 
 
 <% form_tag(@value, :method => "get") do %>
-<table> 
-  Nazwa serwera
-  <td><%= text_field_tag(:q, hostname) %></td>
-  <td><%= button_to "Zmień", rcon_command('hostname', params[:q])%></td>
-</table>
+  Wyślij wiadomość na serwer</br>
+  <%= text_field_tag(:x) %>
+  <%= button_to "Ok", rcon_command('say', params[:x])%>
+<% end %></br>
+  
+<% form_tag(@value, :method => "get") do %>
+  Nazwa serwera</br>
+  <%= text_field_tag(:a) %>
+  <%= button_to "Ok", rcon_command('hostname', params[:a])%>
+<% end %></br>
+  
+<% form_tag(@value, :method => "get") do %>  
+  Czas rundy ( 3 - 15 min )</br>
+  <%= text_field_tag(:b) %>
+  <%= button_to "Ok", rcon_command('mp_roundtime', params[:b])%>
+<% end %></br>
+  
+<% form_tag(@value, :method => "get") do %>  
+  Ilość rund</br>
+  <%= text_field_tag(:c) %>
+  <%= button_to "Ok", rcon_command('mp_roundlimit', params[:c])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+  Restart rundy za (do 10 sec)</br>
+  <%= text_field_tag(:d) %>
+  <%= button_to "Ok", rcon_command('sv_restartround', params[:d])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+  Limit czasu rozgrywki na mape (0 - bez limitu)</br>
+  <%= text_field_tag(:e) %>
+  <%= button_to "Ok", rcon_command('mp_timelimit', params[:e])%>
+<% end %></br> 
+  
+<% form_tag(@value, :method => "get") do %>  
+  Ilość startowych funduszy (max 16000)</br>
+  <%= text_field_tag(:f) %>
+  <%= button_to "Ok", rcon_command('mp_startmoney', params[:f])%>
+<% end %></br> 
+
+<% form_tag(@value, :method => "get") do %>  
+  Czas kupowania wyposarzenia (np. 1.25 = 1 minuta i 25 sec)</br>
+  <%= text_field_tag(:g) %>
+  <%= button_to "Ok", rcon_command('mp_buytime', params[:g])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+  Limit zwycięskich rund do wygrania (0 = bez limitu)</br>
+  <%= text_field_tag(:h) %>
+  <%= button_to "Ok", rcon_command('mp_winlimit', params[:h])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Czas na rozbrojenie C4 (15-90 sek)</br>
+  <%= text_field_tag(:i) %>
+  <%= button_to "Ok", rcon_command('mp_c4timer', params[:i])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Czas "freez" przed rozpoczęciem rundy (0 by wyłączyc)</br>
+  <%= text_field_tag(:j) %>
+  <%= button_to "Ok", rcon_command('mp_freezetime', params[:j])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Ilośc zakładników których gracz może zabić zanim zostanie wyrzucony z serwera</br>
+  <%= text_field_tag(:k) %>
+  <%= button_to "Ok", rcon_command('mp_hostagepenalty', params[:k])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Czas przez jaki gracze mogą pisać przy końcu rundy, przed rotacją mapy</br>
+  <%= text_field_tag(:l) %>
+  <%= button_to "Ok", rcon_command('mp_chattime', params[:l])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Liczba fragów jakie należy zdobyć by wygrać mapę </br>
+  <%= text_field_tag(:m) %>
+  <%= button_to "Ok", rcon_command('mp_fraglimit', params[:m])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Grawitacja na mapie (domyślna - 800) </br>
+  <%= text_field_tag(:n) %>
+  <%= button_to "Ok", rcon_command('sv_gravity', params[:n])%>
+<% end %></br>
+
+  
 <% end %>

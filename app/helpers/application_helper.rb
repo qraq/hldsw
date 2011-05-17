@@ -131,14 +131,18 @@ def rcon_status
 end
 
 def rcon_command(command, value)
+ if value.nil?
+   return nil
+ else
  server = GoldSrcServer.new(@ip_server)
- return nil if value.nil?
  begin
   server.rcon_auth('haslo')
   puts server.rcon_exec(command.to_s+ " " +value.to_s)
  #  puts command.to_s+ " " +value.to_s
+  flash[:notice] = "Polecenie ["+command.to_s+ " " +value.to_s+ "] wyslano na serwer"
 rescue RCONNoAuthException
   warn 'Niepoprawne haslo dostepu do serwera.'
+ end
  end
 end
 
