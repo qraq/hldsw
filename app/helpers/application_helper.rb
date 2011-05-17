@@ -81,10 +81,26 @@ def parse
     return @score.size-1
 end
 
+def how_many_players
+  server = GoldSrcServer.new(@ip_server)
+  @lines = []
+ begin
+  server.rcon_auth('haslo')
+  @lines << server.rcon_exec('users')
+  
+  rescue RCONNoAuthException
+  warn 'Niepoprawne haslo dostepu do serwera.'
+ end
+  return @lines.to_s.delete("\[\]\"\\")[88..89].to_i
+end
+
 
 def  players_online(p,d)
   parse
   @entry = []  
+  if d == 10 #steam ID
+    return @score[p][4].to_s.delete("\[\]\"\\")
+  end
   if d == 4
     if Integer(@score[p][8]) == 0 
       @entry << Float(@score[p][5])/1
@@ -123,12 +139,13 @@ end
 def rcon_status
  server = GoldSrcServer.new(@ip_server)
  begin
-  server.rcon_auth(@rcon_pass)
+  server.rcon_auth('haslo')
   puts server.rcon_exec('status')
  rescue RCONNoAuthException
   warn 'Niepoprawne haslo dostepu do serwera.'
  end
 end
+
 
 def rcon_command(command, value)
  if value.nil?
@@ -139,14 +156,31 @@ def rcon_command(command, value)
   server.rcon_auth('haslo')
   puts server.rcon_exec(command.to_s+ " " +value.to_s)
  #  puts command.to_s+ " " +value.to_s
-  flash[:notice] = "Polecenie ["+command.to_s+ " " +value.to_s+ "] wyslano na serwer"
+      sleep 5 if command.to_s == 'changelevel2' || command.to_s == 'changelevel' 
+    
+      flash[:notice] = "Polecenie ["+command.to_s+ " " +value.to_s+ "] wyslano na serwer"
+    
 rescue RCONNoAuthException
   warn 'Niepoprawne haslo dostepu do serwera.'
  end
  end
 end
 
-
+def rcon_ban(value)
+ if value.nil?
+   return nil
+ else
+ server = GoldSrcServer.new(@ip_server)
+ begin
+  server.rcon_auth('haslo')
+  puts server.rcon_exec("banid 1".to_s+ " " +value.to_s+" kick")    
+      flash[:notice] = "Polecenie [banid 1".to_s+ " " +value.to_s+" kick] wyslano na serwer"
+    
+rescue RCONNoAuthException
+  warn 'Niepoprawne haslo dostepu do serwera.'
+ end
+ end
+end
 
 
 
