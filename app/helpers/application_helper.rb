@@ -15,7 +15,7 @@ end
 
 ###################
 
-@@log = '/home/qraq/Desktop/hlds/cstrike/logi/log'
+@@log = '/home/qraq/Desktop/hlds/cstrike/logi/status'
 def hostname
          
    File.readlines(@@log).each do |line| 
@@ -91,7 +91,8 @@ def how_many_players
   rescue RCONNoAuthException
   warn 'Niepoprawne haslo dostepu do serwera.'
  end
-  return @lines.to_s.delete("\[\]\"\\")[88..89].to_i
+  return @lines.to_s.delete("\[\]\"\\").reverse![6].to_i
+  ##.to_s.delete("\[\]\"\\")
 end
 
 
@@ -137,12 +138,17 @@ end
 
  @ip_server = '127.0.0.1'
 def rcon_status
+  
  server = GoldSrcServer.new(@ip_server)
  begin
   server.rcon_auth('haslo')
-  puts server.rcon_exec('status')
+  File.open( "/home/qraq/Desktop/hlds/cstrike/logi/status", "w" ) do |the_file| 
+        the_file.puts server.rcon_exec('status')
+  end
  rescue RCONNoAuthException
   warn 'Niepoprawne haslo dostepu do serwera.'
+  rescue Errno::ECONNREFUSED
+  return "Serwer Offline"
  end
 end
 

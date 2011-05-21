@@ -1,12 +1,13 @@
-<h1>HLDSWeb Serwer Status</h1>
+<h1>Serwer Status</h1>
 <p>
-Status serwerat:
+Status serwera:
+ <% rcon_status %>
 
-<% rcon_status %>
 </p>
   <% if hostname.nil? %>
 Serwer offline!
   <% else %>
+ 
 <table class="status">
   
 <tr>

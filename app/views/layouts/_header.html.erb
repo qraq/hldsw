@@ -6,12 +6,12 @@
 <ul>
   <li><%= link_to "Start",  home_path %></li>
 <% if admin_user? %>
-  <li><%= link_to "Ustawienia serwera",  serverconsole_path %></li 
+  <li><%= link_to "Konfiguracja serwera",  serverconsole_path %></li 
 <% end %>
 <% if signed_in? %>
   <li><%= link_to "Użytkownicy", users_path %></li>
-  <li><%= link_to "Mój profil", current_user %></li>
-  <li><%= link_to "Ustawienia", edit_user_path(current_user) %></li>
+  <li><%= link_to "Moje konto", current_user %></li>
+  <li><%= link_to "Ustawienia profilu", edit_user_path(current_user) %></li>
   <li><%= link_to "Wyloguj", signout_path, :method => :delete %></li>
 <% else %>
   <li><%= link_to "Zaloguj", signin_path %></li>

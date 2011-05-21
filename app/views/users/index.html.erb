@@ -31,7 +31,10 @@
  </table>
 </br></br>
 <h1>Obecnie online </h1>
-
+<% if hostname.nil? %>
+Serwer offline!
+  <% else %> 
+  <% rcon_status %>
 <table>
   <tr> 
     <td> Konto gracza</td>
@@ -80,3 +83,4 @@
   </table>
 
 
+<% end %>

@@ -1,0 +1,78 @@
+
+
+<table>
+  <tr> 
+    <td> <%= link_to "Ustawienia gry",  gameconsole_path %></td>
+    <td> <%= link_to "Ustawienia rundy",  roundconsole_path %> </td>
+    <td> <%= link_to "Ustawienia gracza",  userconsole_path %> </td>
+  </tr> 
+</table>
+
+<h1> Konfiguracja - Ustawienia gry </h1>
+<% form_tag(@value, :method => "get") do %>
+  Wyślij wiadomość na serwer</br>
+  <%= text_field_tag(:x) %>
+  <%= button_to "Ok", rcon_command('say', params[:x])%>
+<% end %></br>
+  
+<% form_tag(@value, :method => "get") do %>
+  Nazwa serwera</br>
+  <%= text_field_tag(:a) %>
+  <%= button_to "Ok", rcon_command('hostname', params[:a])%>
+<% end %></br>
+  
+<% form_tag(@value, :method => "get") do %>  
+  Czas rundy ( 3 - 15 min )</br>
+  <%= text_field_tag(:b) %>
+  <%= button_to "Ok", rcon_command('mp_roundtime', params[:b])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+  Ilość rund</br>
+  <%= text_field_tag(:c) %>
+  <%= button_to "Ok", rcon_command('mp_roundlimit', params[:c])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+  Restart rundy za (do 10 sec)</br>
+  <%= text_field_tag(:d) %>
+  <%= button_to "Ok", rcon_command('sv_restartround', params[:d])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+  Limit czasu rozgrywki na mape (0 - bez limitu)</br>
+  <%= text_field_tag(:e) %>
+  <%= button_to "Ok", rcon_command('mp_timelimit', params[:e])%>
+<% end %></br> 
+
+<% form_tag(@value, :method => "get") do %>  
+ Automatyczny balans drużyn </br>
+<%= radio_button_tag(:t, "0") %>
+<%= label_tag(:t, "Nie") %>
+<%= radio_button_tag(:t, "1") %>
+<%= label_tag(:t, "Tak") %>
+  <%= button_to "Ok", rcon_command('mp_autoteambalance', params[:t])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Automatycznie rozłącz bezczynnych graczy </br>
+<%= radio_button_tag(:u, "0") %>
+<%= label_tag(:u, "Nie") %>
+<%= radio_button_tag(:u, "1") %>
+<%= label_tag(:u, "Tak") %>
+  <%= button_to "Ok", rcon_command('mp_autokick', params[:u])%>
+<% end %></br>
+
+
+
+<% form_tag(@v, :method => "get") do %>  
+Rozpocznij nową grę na podanej mapie</br>
+<%= select_tag(:map, options_for_select([['[as]Oilrig', 'as_oilrig'],['[cs]Assault', 'cs_assault'],['[cs]Zaphod\'s Estate', 'cs_estate'],['[cs]Italy', 'cs_italy'],['[cs]Militia', 'cs_militia'],['[de]Aztec', 'de_aztec'],['[de]Dust', 'de_dust'],['[de]Dust2', 'de_dust2'],['[de]Inferno', 'de_inferno'],['[de]Trainyard', 'de_train'],['[de]Vertigo', 'de_vertigo'], ['[de]Nuke', 'de_nuke']])) %>
+<%= button_to "Ok", rcon_command('changelevel', params[:map])%>
+  <% end %></br>
+  
+<% form_tag(@v, :method => "get") do %>  
+Kontynuuj grę na nowej mapie</br>
+<%= select_tag(:map, options_for_select([['[as]Oilrig', 'as_oilrig'],['[cs]Assault', 'cs_assault'],['[cs]Zaphod\'s Estate', 'cs_estate'],['[cs]Italy', 'cs_italy'],['[cs]Militia', 'cs_militia'],['[de]Aztec', 'de_aztec'],['[de]Dust', 'de_dust'],['[de]Dust2', 'de_dust2'],['[de]Inferno', 'de_inferno'],['[de]Trainyard', 'de_train'],['[de]Vertigo', 'de_vertigo'], ['[de]Nuke', 'de_nuke']])) %>
+<%= button_to "Ok", rcon_command('changelevel2', params[:map])%>
+  <% end %></br>

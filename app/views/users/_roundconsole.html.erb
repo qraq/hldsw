@@ -1,0 +1,76 @@
+
+<table>
+  <tr> 
+    <td> <%= link_to "Ustawienia gry",  gameconsole_path %></td>
+    <td> <%= link_to "Ustawienia rundy",  roundconsole_path %> </td>
+    <td> <%= link_to "Ustawienia gracza",  userconsole_path %> </td>
+  </tr> 
+</table>
+<h1> Konfiguracja - Ustawienia rundy </h1>
+
+<% form_tag(@value, :method => "get") do %>  
+ Czas "freez" przed rozpoczęciem rundy (0 by wyłączyc)</br>
+  <%= text_field_tag(:j) %>
+  <%= button_to "Ok", rcon_command('mp_freezetime', params[:j])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+  Ilość startowych funduszy (max 16000)</br>
+  <%= text_field_tag(:f) %>
+  <%= button_to "Ok", rcon_command('mp_startmoney', params[:f])%>
+<% end %></br> 
+
+<% form_tag(@value, :method => "get") do %>  
+  Czas kupowania wyposarzenia (np. 1.25 = 1 minuta i 25 sec)</br>
+  <%= text_field_tag(:g) %>
+  <%= button_to "Ok", rcon_command('mp_buytime', params[:g])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Czas na rozbrojenie C4 (15-90 sek)</br>
+  <%= text_field_tag(:i) %>
+  <%= button_to "Ok", rcon_command('mp_c4timer', params[:i])%>
+<% end %></br>
+
+
+<% form_tag(@value, :method => "get") do %>  
+  Limit zwycięskich rund do wygrania (0 = bez limitu)</br>
+  <%= text_field_tag(:h) %>
+  <%= button_to "Ok", rcon_command('mp_winlimit', params[:h])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Liczba fragów jakie należy zdobyć by wygrać mapę </br>
+  <%= text_field_tag(:m) %>
+  <%= button_to "Ok", rcon_command('mp_fraglimit', params[:m])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Grawitacja na mapie (domyślna - 800) </br>
+  <%= text_field_tag(:n) %>
+  <%= button_to "Ok", rcon_command('sv_gravity', params[:n])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Maksymalna prędkość wszystkich obiektów balistycznych (domyślnie 3500) </br>
+  <%= text_field_tag(:maxvel) %>
+  <%= button_to "Ok", rcon_command('sv_maxvelocity', params[:maxvel])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Ostrzał własnej drużyny (Friendy fire) </br>
+<%= radio_button_tag(:o, "0") %>
+<%= label_tag(:o, "Wylączony") %>
+<%= radio_button_tag(:o, "1") %>
+<%= label_tag(:o, "Włączony") %>
+  <%= button_to "Ok", rcon_command('mp_friendlyfire', params[:o])%>
+<% end %></br>
+
+<% form_tag(@value, :method => "get") do %>  
+ Kara za zabicie członka własnej drużyny </br>
+<%= radio_button_tag(:p, "0") %>
+<%= label_tag(:p, "Wyłączona") %>
+<%= radio_button_tag(:p, "1") %>
+<%= label_tag(:p, "Włączona") %>
+  <%= button_to "Ok", rcon_command('mp_tkpunish', params[:p])%>
+<% end %></br>
