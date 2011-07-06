@@ -122,11 +122,27 @@ select{
 .config-cont{
 	background:#f1f1f1;
 	padding:10px;
-	margin-left:20px;
+	margin:20px 0px 0px 20px;
 	clear:both;
-	display:block;
+	display:inline-block;
 	width:350px;
 	height:52px;
+	-moz-border-radius:
+	10px;
+	-webkit-border-radius: 10px;
+	border-radius:
+	10px;
+}
+
+
+.config-cont-taller{
+	background:#f1f1f1;
+	padding:10px 10px 20px 10px;
+	margin:20px 0px 0px 20px;
+	clear:both;
+	display:inline-block;
+	width:350px;
+	height:auto;
 	-moz-border-radius:
 	10px;
 	-webkit-border-radius: 10px;
