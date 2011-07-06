@@ -9,7 +9,7 @@
 <body>
 <div class="container">
 <%= render 'layouts/header' %>
-<section class="round">
+<section class="round" style="margin-top:58px;">
 <% flash.each do |key, value| %>
 <div class="flash <%= key %>"><%= value %></div>
 <% end %>
@@ -17,6 +17,7 @@
 <%= yield %>
 </section>
   <%= render 'layouts/footer' %>
+	<div style="margin:35px auto 0px auto; width:300px;">Copyright © 2011 Adam Menkiewicz</div>
   <%= debug(params) if Rails.env.development?%>
 </div>
 </body>

@@ -1,92 +1,199 @@
+<h1> Konfiguracja</h1>
 
-<table>
+<table class="menu-table" cellspacing="0" cellpadding="0" border="0">
   <tr> 
-    <td> <%= link_to "Ustawienia gry",  gameconsole_path %></td>
+    <td> <%= link_to "Ustawienia gry",  gameconsole_path %> </td>
     <td> <%= link_to "Ustawienia rundy",  roundconsole_path %> </td>
-    <td> <%= link_to "Ustawienia gracza",  userconsole_path %> </td>
+    <td><b> Ustawienia gracza </b></td>
   </tr> 
-</table>
-<h1> Konfiguracja - Ustawienia gracza </h1>
+</table><br/>
 
-<% form_tag(@value, :method => "get") do %>  
- Dopuszczona ilośc zakładników których gracz może zabić zanim zostanie wyrzucony z serwera</br>
-  <%= text_field_tag(:k) %>
-  <%= button_to "Ok", rcon_command('mp_hostagepenalty', params[:k])%>
-<% end %></br>
 
-<% form_tag(@value, :method => "get") do %>  
- Czas przez jaki gracze mogą pisać przy końcu rundy, przed rotacją mapy</br>
-  <%= text_field_tag(:l) %>
-  <%= button_to "Ok", rcon_command('mp_chattime', params[:l])%>
-<% end %></br>
+<div class="config-cont">
+  <div class="config-intercont">
+        <% form_tag(@value, :method => "get") do %>  
+         Wyrzuć z serwera po postrzałach zakładników
+         </div>
+<div class="config-intercont">
+    <div class="config-form">
+          <%= text_field_tag(:k) %>
+    </div>
+    <div class="config-form">
+          <%= button_to "Ok", rcon_command('mp_hostagepenalty', params[:k])%>
+          <% end %>
+    </div>
+  </div>
+</div>
 
-<% form_tag(@value, :method => "get") do %>  
- Maksymalna prędkość z jaką poruszają się gracze (domyślnie 350) </br>
-  <%= text_field_tag(:maxspeed) %>
-  <%= button_to "Ok", rcon_command('sv_maxspeed', params[:maxspeed])%>
-<% end %></br>
 
-<% form_tag(@value, :method => "get") do %>  
- Dźwięk kroków </br>
-<%= radio_button_tag(:r, "0") %>
-<%= label_tag(:r, "Wyłączony") %>
-<%= radio_button_tag(:r, "1") %>
-<%= label_tag(:r, "Włączony") %>
-  <%= button_to "Ok", rcon_command('mp_footsteps', params[:r])%>
-<% end %></br>
+<div class="config-cont">
+  <div class="config-intercont">
+          <% form_tag(@value, :method => "get") do %>  
+           Czas pisania przy końcu meczu
+           </div>
+<div class="config-intercont">
+    <div class="config-form">
+            <%= text_field_tag(:l) %>
+      </div>
+    <div class="config-form">
+            <%= button_to "Ok", rcon_command('mp_chattime', params[:l])%>
+          <% end %>
+    </div>
+</div>
+</div>
 
-<% form_tag(@value, :method => "get") do %>  
- Używanie latarki </br>
-<%= radio_button_tag(:s, "0") %>
-<%= label_tag(:s, "Niedostępne") %>
-<%= radio_button_tag(:s, "1") %>
-<%= label_tag(:s, "Dostępne") %>
-  <%= button_to "Ok", rcon_command('mp_flashlight', params[:s])%>
-<% end %></br>
+<div class="config-cont">
+  <div class="config-intercont">
+          <% form_tag(@value, :method => "get") do %>  
+           Prędkość z jaką poruszają się gracze [domyślnie: 350]
+           </div>
+<div class="config-intercont">
+    <div class="config-form">
+            <%= text_field_tag(:maxspeed) %>
+      </div>
+    <div class="config-form">
+            <%= button_to "Ok", rcon_command('sv_maxspeed', params[:maxspeed])%>
+          <% end %>
+    </div>
+</div>
+</div>
 
-<% form_tag(@value, :method => "get") do %>  
- Gracze słyszą wszystkich, nie tylko własną drużynę </br>
-<%= radio_button_tag(:w, "0") %>
-<%= label_tag(:w, "Nie") %>
-<%= radio_button_tag(:w, "1") %>
-<%= label_tag(:w, "Tak") %>
-  <%= button_to "Ok", rcon_command('sv_alltalk', params[:w])%>
-<% end %></br>
+<div class="config-cont">
+	<div class="config-intercont">
+        <% form_tag(@value, :method => "get") do %>  
+         Dźwięk kroków
+         </div>  
+        <div class="config-intercont">
+          <div class="config-form">
+                  <%= radio_button_tag(:r, "0") %>
+                  <%= label_tag(:r, "Wyłącz") %>
+                  <%= radio_button_tag(:r, "1") %>
+                  <%= label_tag(:r, "Włącz") %>
+            </div>
+          <div class="config-form">
+                    <%= button_to "Ok", rcon_command('mp_footsteps', params[:r])%>
+                  <% end %>
+          </div>
+        </div>
+</div>
 
-<% form_tag(@value, :method => "get") do %>  
-  Pozwól na obserwatorów</br>
-<%= radio_button_tag(:w, "0") %>
-<%= label_tag(:w, "Nie") %>
-<%= radio_button_tag(:w, "1") %>
-<%= label_tag(:w, "Tak") %>
-  <%= button_to "Ok", rcon_command('mp_allowspectators', params[:w])%>
-<% end %></br>
 
-<% if how_many_players == 0 %>
-  Obecnie nie ma żadnych graczy na serwerze
+
+<div class="config-cont">
+	<div class="config-intercont">
+        <% form_tag(@value, :method => "get") do %>  
+         Używanie latarki
+         </div>  
+          <div class="config-intercont">
+            <div class="config-form">
+                  <%= radio_button_tag(:s, "0") %>
+                  <%= label_tag(:s, "Niedostępne") %>
+                  <%= radio_button_tag(:s, "1") %>
+                  <%= label_tag(:s, "Dostępne") %>
+              </div>
+          <div class="config-form">
+          <%= button_to "Ok", rcon_command('mp_flashlight', params[:s])%>
+        <% end %>
+          </div>
+          </div>
+</div>
+
+
+
+<div class="config-cont">
+	<div class="config-intercont">
+        <% form_tag(@value, :method => "get") do %>  
+         Gracze słyszą wszystkich, nie tylko własną drużynę
+         </div>  
+          <div class="config-intercont">
+            <div class="config-form">
+                  <%= radio_button_tag(:w, "0") %>
+                  <%= label_tag(:w, "Nie") %>
+                  <%= radio_button_tag(:w, "1") %>
+                  <%= label_tag(:w, "Tak") %>
+              </div>
+          <div class="config-form">
+          <%= button_to "Ok", rcon_command('sv_alltalk', params[:w])%>
+        <% end %>
+          </div>
+          </div>
+</div>
+
+<div class="config-cont">
+	<div class="config-intercont">
+        <% form_tag(@value, :method => "get") do %>  
+          Pozwól na obserwatorów
+          </div>  
+          <div class="config-intercont">
+            <div class="config-form">
+                  <%= radio_button_tag(:w, "0") %>
+                  <%= label_tag(:w, "Nie") %>
+                  <%= radio_button_tag(:w, "1") %>
+                  <%= label_tag(:w, "Tak") %>
+               </div>
+          <div class="config-form">
+          <%= button_to "Ok", rcon_command('mp_allowspectators', params[:w])%>
+        <% end %>
+          </div>
+        </div>
+</div>
+
+
+        
+        
+        
+<% #if how_many_players == 0 %>
+  <% if how_many_players == 1 %>
+ <div class="config-cont">
+      Usuń graczy z serwera</br>
+      [Obecnie nie ma żadnych graczy na serwerze]
+  </div>
   <%  else %>
-  
-<% form_tag(@v, :method => "get") do %>  
-Usuń graczy z serwera</br>
-<% for i in 0..how_many_players-1 %>
-  <%= check_box_tag(:player, players_online(i,2)) %>
-  <%= label_tag(:player, players_online(i,2)) %></br>
+   
+
+<div class="config-cont">
+	<div class="config-intercont">
+          <% form_tag(@v, :method => "get") do %>  
+          Usuń graczy z serwera
+          </div>  
+          <div class="config-intercont">
+            <div class="config-form">
+              <% #for i in 0..how_many_players-1 %>
+              <% for i in 0..2 %>
+                <%= check_box_tag(:player, players_online(i,2)) %>
+                <%= label_tag(:player, players_online(i,2)) %></br>
+                <% end %>
+            </div>
+            <div class="config-form">
+               <%= button_to "Ok", rcon_command('kick', params[:player])%>
+                <% rcon_status %>
+                <% end %>
+            </div>
+          </div>
+</div>
+
+            
+            
+<div class="config-cont">
+	<div class="config-intercont">            
+      <% form_tag(@v, :method => "get") do %>  
+      Banuj graczy </br>
+      </div>  
+          <div class="config-intercont">
+            <div class="config-form">
+              <%# for i in 0..how_many_players-1 %>
+              <% for i in 0..2 %>
+                <%= check_box_tag(:player2, players_online(i,10)) %>
+                <%= label_tag(:player2, players_online(i,2)) %></br>
+                <% end %>
+            </div>
+            <div class="config-form">
+               <%= button_to "Ok", rcon_ban(params[:player2])%>
+                <% rcon_status %>
+                <% end %>
+            </div>
+          </div>
+</div>
+          
+              
   <% end %>
-  
- <%= button_to "Ok", rcon_command('kick', params[:player])%>
-  <% rcon_status %>
-  <% end %></br>
-
-<% form_tag(@v, :method => "get") do %>  
-Banuj gracza </br>
-
-<% for i in 0..how_many_players-1 %>
-  <%= check_box_tag(:player2, players_online(i,10)) %>
-  <%= label_tag(:player2, players_online(i,2)) %></br>
-  <% end %>
-  
- <%= button_to "Ok", rcon_ban(params[:player2])%>
-  <% rcon_status %>
-  <% end %></br>
-
-<% end %>

@@ -4,7 +4,7 @@
 
  
 <table class="lader">
-  <tr> 
+  <tr class="table-header"> 
     <td> <%= sort_link 'Miejsce', :points %></td>
     <td> <%= sort_link 'Gracz', :name %> </td>
     <td> <%= sort_link 'Punkty', :points %>   </td>
@@ -36,7 +36,7 @@ Serwer offline!
   <% else %> 
   <% rcon_status %>
 <table>
-  <tr> 
+  <tr class="table-header"> 
     <td> Konto gracza</td>
     <td> Nick gracza </td>
     <td> Fragi </td>
@@ -46,7 +46,7 @@ Serwer offline!
     <td> Ping </td>
   </tr> 
     
-  <% for i in 0..how_many_players-1 %>
+  <% for i in 0..2 %>
   
     
     
@@ -72,7 +72,7 @@ Serwer offline!
     
     <td><%= players_online(i,2)   %></td> 
     <td><%= players_online(i,5)   %></td>
-    <td><%= players_online(i,8)   %> </td> 
+    <td><%= players_online(i,8)   %></td> 
     <td><%= players_online(i,4)   %></td>
     <td><%= players_online(i,6)   %></td>
     <td><%= players_online(i,7)   %></td>

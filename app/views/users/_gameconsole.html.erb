@@ -1,78 +1,177 @@
+<h1> Konfiguracja</h1>
 
-
-<table>
+<table class="menu-table" cellspacing="0" cellpadding="0" border="0">
   <tr> 
-    <td> <%= link_to "Ustawienia gry",  gameconsole_path %></td>
+    <td class="config-selected"> Ustawienia gry </td>
     <td> <%= link_to "Ustawienia rundy",  roundconsole_path %> </td>
-    <td> <%= link_to "Ustawienia gracza",  userconsole_path %> </td>
+    <td class="menu-lastitem"> <%= link_to "Ustawienia gracza",  userconsole_path %> </td>
   </tr> 
-</table>
+</table><br/>
 
-<h1> Konfiguracja - Ustawienia gry </h1>
-<% form_tag(@value, :method => "get") do %>
-  Wyślij wiadomość na serwer</br>
-  <%= text_field_tag(:x) %>
-  <%= button_to "Ok", rcon_command('say', params[:x])%>
-<% end %></br>
+
+<div class="config-cont">
+  <div class="config-intercont">
+		<% form_tag(@value, :method => "get") do %>
+		Wyślij wiadomość na serwer
+	</div>
+	<div class="config-intercont">
+		<div class="config-form">
+			<%= text_field_tag(:x) %>
+		</div>
+		<div class="config-form">
+			<%= button_to "Ok", rcon_command('say', params[:x]) %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="config-cont">
+  <div class="config-intercont">
+		<% form_tag(@value, :method => "get") do %>
+		Nazwa serwera
+	</div>
+	<div class="config-intercont">
+		<div class="config-form">
+			<%= text_field_tag(:a) %>
+		</div>
+		<div class="config-form">
+			<%= button_to "Ok", rcon_command('hostname', params[:a])%>
+			<% end %>
+		</div>
+  </div>
+</div>
+
+<div class="config-cont">
+  <div class="config-intercont">
+		<% form_tag(@value, :method => "get") do %>  
+		Czas rundy ( 3 - 15 min )
+	</div>
+	<div class="config-intercont">
+		<div class="config-form">
+			<%= text_field_tag(:b) %>
+		</div>
+		<div class="config-form">
+			<%= button_to "Ok", rcon_command('mp_roundtime', params[:b])%>
+			<% end %>
+		</div>
+  </div>
+</div>
+
+<div class="config-cont">
+	<div class="config-intercont">
+		<% form_tag(@value, :method => "get") do %>  
+		  Ilość rund
+	</div>
+	<div class="config-intercont">
+		<div class="config-form">
+		  <%= text_field_tag(:c) %>
+		</div>
+		<div class="config-form">
+		  <%= button_to "Ok", rcon_command('mp_roundlimit', params[:c])%>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="config-cont">
+	<div class="config-intercont">
+		<% form_tag(@value, :method => "get") do %>  
+			Restart rundy za (do 10 sec)
+	</div>
+	<div class="config-intercont">
+		<div class="config-form">
+			<%= text_field_tag(:d) %>
+		</div>
+		<div class="config-form">
+			<%= button_to "Ok", rcon_command('sv_restartround', params[:d])%>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="config-cont">
+	<div class="config-intercont">
+		<% form_tag(@value, :method => "get") do %>  
+			Limit czasu rozgrywki na mape (0 - bez limitu)
+	</div>
+	<div class="config-intercont">
+		<div class="config-form">
+			<%= text_field_tag(:e) %>
+		</div>
+		<div class="config-form">
+			<%= button_to "Ok", rcon_command('mp_timelimit', params[:e])%>
+			<% end %>
+		</div>
+	</div>
+</div>	
+
+<div class="config-cont">
+	<div class="config-intercont">
+		<% form_tag(@value, :method => "get") do %>  
+		 Automatyczny balans drużyn 
+	</div>
+	<div class="config-intercont">
+		<div class="config-form">
+			<%= radio_button_tag(:t, "0") %>
+			<%= label_tag(:t, "Nie") %>
+			<%= radio_button_tag(:t, "1") %>
+			<%= label_tag(:t, "Tak") %>
+		</div>
+		<div class="config-form">
+			<%= button_to "Ok", rcon_command('mp_autoteambalance', params[:t])%>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="config-cont">
+	<div class="config-intercont">
+		<% form_tag(@value, :method => "get") do %>  
+		 Automatycznie rozłącz bezczynnych graczy 
+	</div>
+	<div class="config-intercont">
+		<div class="config-form">
+			<%= radio_button_tag(:u, "0") %>
+			<%= label_tag(:u, "Nie") %>
+			<%= radio_button_tag(:u, "1") %>
+			<%= label_tag(:u, "Tak") %>
+		</div>
+		<div class="config-form">
+			<%= button_to "Ok", rcon_command('mp_autokick', params[:u])%>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
+<div class="config-cont">
+	<div class="config-intercont">
+		<% form_tag(@v, :method => "get") do %>  
+		Rozpocznij nową grę na podanej mapie
+	</div>
+	<div class="config-intercont">
+		<div class="config-form">
+			<%= select_tag(:map, options_for_select([['[as]Oilrig', 'as_oilrig'],['[cs]Assault', 'cs_assault'],['[cs]Zaphod\'s Estate', 'cs_estate'],['[cs]Italy', 'cs_italy'],['[cs]Militia', 'cs_militia'],['[de]Aztec', 'de_aztec'],['[de]Dust', 'de_dust'],['[de]Dust2', 'de_dust2'],['[de]Inferno', 'de_inferno'],['[de]Trainyard', 'de_train'],['[de]Vertigo', 'de_vertigo'], ['[de]Nuke', 'de_nuke']])) %>
+		</div>
+		<div class="config-form">
+			<%= button_to "Ok", rcon_command('changelevel', params[:map])%>
+			<% end %>
+		</div>
+	</div>
+</div>
   
-<% form_tag(@value, :method => "get") do %>
-  Nazwa serwera</br>
-  <%= text_field_tag(:a) %>
-  <%= button_to "Ok", rcon_command('hostname', params[:a])%>
-<% end %></br>
-  
-<% form_tag(@value, :method => "get") do %>  
-  Czas rundy ( 3 - 15 min )</br>
-  <%= text_field_tag(:b) %>
-  <%= button_to "Ok", rcon_command('mp_roundtime', params[:b])%>
-<% end %></br>
-
-<% form_tag(@value, :method => "get") do %>  
-  Ilość rund</br>
-  <%= text_field_tag(:c) %>
-  <%= button_to "Ok", rcon_command('mp_roundlimit', params[:c])%>
-<% end %></br>
-
-<% form_tag(@value, :method => "get") do %>  
-  Restart rundy za (do 10 sec)</br>
-  <%= text_field_tag(:d) %>
-  <%= button_to "Ok", rcon_command('sv_restartround', params[:d])%>
-<% end %></br>
-
-<% form_tag(@value, :method => "get") do %>  
-  Limit czasu rozgrywki na mape (0 - bez limitu)</br>
-  <%= text_field_tag(:e) %>
-  <%= button_to "Ok", rcon_command('mp_timelimit', params[:e])%>
-<% end %></br> 
-
-<% form_tag(@value, :method => "get") do %>  
- Automatyczny balans drużyn </br>
-<%= radio_button_tag(:t, "0") %>
-<%= label_tag(:t, "Nie") %>
-<%= radio_button_tag(:t, "1") %>
-<%= label_tag(:t, "Tak") %>
-  <%= button_to "Ok", rcon_command('mp_autoteambalance', params[:t])%>
-<% end %></br>
-
-<% form_tag(@value, :method => "get") do %>  
- Automatycznie rozłącz bezczynnych graczy </br>
-<%= radio_button_tag(:u, "0") %>
-<%= label_tag(:u, "Nie") %>
-<%= radio_button_tag(:u, "1") %>
-<%= label_tag(:u, "Tak") %>
-  <%= button_to "Ok", rcon_command('mp_autokick', params[:u])%>
-<% end %></br>
-
-
-
-<% form_tag(@v, :method => "get") do %>  
-Rozpocznij nową grę na podanej mapie</br>
-<%= select_tag(:map, options_for_select([['[as]Oilrig', 'as_oilrig'],['[cs]Assault', 'cs_assault'],['[cs]Zaphod\'s Estate', 'cs_estate'],['[cs]Italy', 'cs_italy'],['[cs]Militia', 'cs_militia'],['[de]Aztec', 'de_aztec'],['[de]Dust', 'de_dust'],['[de]Dust2', 'de_dust2'],['[de]Inferno', 'de_inferno'],['[de]Trainyard', 'de_train'],['[de]Vertigo', 'de_vertigo'], ['[de]Nuke', 'de_nuke']])) %>
-<%= button_to "Ok", rcon_command('changelevel', params[:map])%>
-  <% end %></br>
-  
-<% form_tag(@v, :method => "get") do %>  
-Kontynuuj grę na nowej mapie</br>
-<%= select_tag(:map, options_for_select([['[as]Oilrig', 'as_oilrig'],['[cs]Assault', 'cs_assault'],['[cs]Zaphod\'s Estate', 'cs_estate'],['[cs]Italy', 'cs_italy'],['[cs]Militia', 'cs_militia'],['[de]Aztec', 'de_aztec'],['[de]Dust', 'de_dust'],['[de]Dust2', 'de_dust2'],['[de]Inferno', 'de_inferno'],['[de]Trainyard', 'de_train'],['[de]Vertigo', 'de_vertigo'], ['[de]Nuke', 'de_nuke']])) %>
-<%= button_to "Ok", rcon_command('changelevel2', params[:map])%>
-  <% end %></br>
+<div class="config-cont">
+	<div class="config-intercont">
+		<% form_tag(@v, :method => "get") do %>  
+		Kontynuuj grę na nowej mapie
+	</div>
+	<div class="config-intercont">
+		<div class="config-form">
+			<%= select_tag(:map, options_for_select([['[as]Oilrig', 'as_oilrig'],['[cs]Assault', 'cs_assault'],['[cs]Zaphod\'s Estate', 'cs_estate'],['[cs]Italy', 'cs_italy'],['[cs]Militia', 'cs_militia'],['[de]Aztec', 'de_aztec'],['[de]Dust', 'de_dust'],['[de]Dust2', 'de_dust2'],['[de]Inferno', 'de_inferno'],['[de]Trainyard', 'de_train'],['[de]Vertigo', 'de_vertigo'], ['[de]Nuke', 'de_nuke']])) %>
+		</div>
+		<div class="config-form">
+			<%= button_to "Ok", rcon_command('changelevel2', params[:map])%>
+			<% end %>
+		</div>
+	</div>
+</div>

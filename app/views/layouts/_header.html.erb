@@ -3,21 +3,22 @@
 
 <nav class="round">
 
-<ul>
-  <li><%= link_to "Start",  home_path %></li>
-<% if admin_user? %>
-  <li><%= link_to "Konfiguracja serwera",  serverconsole_path %></li 
-<% end %>
-<% if signed_in? %>
-  <li><%= link_to "Użytkownicy", users_path %></li>
-  <li><%= link_to "Moje konto", current_user %></li>
-  <li><%= link_to "Ustawienia profilu", edit_user_path(current_user) %></li>
-  <li><%= link_to "Wyloguj", signout_path, :method => :delete %></li>
-<% else %>
-  <li><%= link_to "Zaloguj", signin_path %></li>
-<% end %>
-
-</ul>
+<table class="menu-table" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><%= link_to "Start",  home_path %></td>
+	<% if admin_user? %>
+		<td><%= link_to "Konfiguracja serwera",  serverconsole_path %></td>
+	<% end %>
+	<% if signed_in? %>
+		<td><%= link_to "Użytkownicy", users_path %></td>
+		<td><%= link_to "Moje konto", current_user %></td>
+		<td><%= link_to "Ustawienia profilu", edit_user_path(current_user) %></td>
+		<td class="menu-lastitem"><%= link_to "Wyloguj", signout_path, :method => :delete %></td>
+	<% else %>
+		<td class="menu-lastitem"><%= link_to "Zaloguj", signin_path %></td>
+	<% end %>
+	</tr>
+</table>
 </nav>
 </header>
 

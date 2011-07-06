@@ -142,9 +142,9 @@ def rcon_status
  server = GoldSrcServer.new(@ip_server)
  begin
   server.rcon_auth('haslo')
-  File.open( "/home/qraq/Desktop/hlds/cstrike/logi/status", "w" ) do |the_file| 
-        the_file.puts server.rcon_exec('status')
-  end
+  #File.open( "/home/qraq/Desktop/hlds/cstrike/logi/status", "w" ) do |the_file| 
+   #     the_file.puts server.rcon_exec('status')
+  #end
  rescue RCONNoAuthException
   warn 'Niepoprawne haslo dostepu do serwera.'
   rescue Errno::ECONNREFUSED
