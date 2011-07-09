@@ -19,7 +19,7 @@
   <td><%= user.points %></td>
   <td><%= user.created_at.strftime("%Y-%m-%d %H:%M") %></td>
   <% if current_user.admin? %>
-    <td><%= link_to "delete", user, :method => :delete, :confirm => "Jesteś pewien?", :title => "Kasowanie #{user.name}" %></td>
+    <td><%= link_to "[usuń]", user, :method => :delete, :confirm => "Jesteś pewien?", :title => "Kasowanie #{user.name}" %></td>
   <% else %>
     <td></td>
   <% end %>  

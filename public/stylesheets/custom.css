@@ -9,8 +9,7 @@ header {
 padding-top: 20px;
 }
 header img {
-padding: 2em;
-background: #e1e1e1;
+margin-left: 40px;
 }
 section {
 margin-top: 1em;
@@ -23,8 +22,9 @@ font-size: 200%;
 }
 /* Links */
 a {
-color: #ee6505;
+color: #BF4C00 !important;
 text-decoration: none;
+font-size:110%;
 }
 a:hover {
 color: #069;
@@ -68,7 +68,7 @@ display: block;
 text-align: center;
 width: 190px;
 color: #fff;
-background: #de5400;
+background: #F0D5C4;
 font-size: 150%;
 font-weight: bold;
 padding: 10px;
@@ -79,7 +79,7 @@ display: block;
 width: 50px;
 height: 12px;
 color: #fff;
-background: #de5400;
+background: #fff;
 font-size: 80%;
 font-weight: bold;
 padding: 8px;
@@ -213,7 +213,7 @@ div.field, div.actions {
 margin-bottom: 10px;
 }
 .field_with_errors {
-margin-top: 10px;
+margin-top: 10px;#cc6600
 padding: 2px;
 background-color: red;
 display: table;

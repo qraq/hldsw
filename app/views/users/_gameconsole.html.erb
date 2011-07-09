@@ -44,7 +44,7 @@
 <div class="config-cont">
   <div class="config-intercont">
 		<% form_tag(@value, :method => "get") do %>  
-		Czas rundy ( 3 - 15 min )
+		Czas rundy [3-15 min]
 	</div>
 	<div class="config-intercont">
 		<div class="config-form">
@@ -76,7 +76,7 @@
 <div class="config-cont">
 	<div class="config-intercont">
 		<% form_tag(@value, :method => "get") do %>  
-			Restart rundy za (do 10 sec)
+			Restart rundy za [do 10 sek]
 	</div>
 	<div class="config-intercont">
 		<div class="config-form">
@@ -92,8 +92,8 @@
 <div class="config-cont">
 	<div class="config-intercont">
 		<% form_tag(@value, :method => "get") do %>  
-			Limit czasu rozgrywki na mape (0 - bez limitu)
-	</div>
+			Ograniczenie czasowe meczu
+        </div>
 	<div class="config-intercont">
 		<div class="config-form">
 			<%= text_field_tag(:e) %>
@@ -147,7 +147,7 @@
 <div class="config-cont">
 	<div class="config-intercont">
 		<% form_tag(@v, :method => "get") do %>  
-		Rozpocznij nową grę na podanej mapie
+		Rozpocznij nową grę na wybranej mapie
 	</div>
 	<div class="config-intercont">
 		<div class="config-form">

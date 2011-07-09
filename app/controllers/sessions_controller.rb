@@ -8,7 +8,7 @@ def create
   if current_user.nil?    
     user = User.authenticate(params[:session][:email], params[:session][:password])
     if user.nil?
-      flash.now[:error] = " niepoprawne haslo/email"
+      flash.now[:error] = " Niepoprawne haslo lub adres email!"
       @title = "Rejestracja"
     render 'new'
     else
