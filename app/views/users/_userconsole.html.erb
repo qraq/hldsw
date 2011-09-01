@@ -142,8 +142,8 @@
         
         
         
-<% #if how_many_players == 0 %>
-  <% if how_many_players == 1 %>
+
+  <% if how_many_players == 0 %>
  <div class="config-cont">
       Usuń graczy z serwera</br>
       [Obecnie nie ma żadnych graczy na serwerze]
@@ -181,8 +181,8 @@
       </div>  
           <div class="config-intercont">
             <div class="config-form">
-              <%# for i in 0..how_many_players-1 %>
-              <% for i in 0..2 %>
+              <% for i in 0..how_many_players-1 %>
+              
                 <%= check_box_tag(:player2, players_online(i,10)) %>
                 <%= label_tag(:player2, players_online(i,2)) %></br>
                 <% end %>
